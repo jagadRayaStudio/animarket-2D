@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24b21bfe662bde40a613ff4efbad1af, type: 3}
+  m_Name: Fish Store 1
+  m_EditorClassIdentifier: 
+  storeName: Toko Ikan Pengu
+  storeItems:
+  - {fileID: 11400000, guid: 2198d4907fa34de40a1018f6034279b3, type: 2}
+  - {fileID: 11400000, guid: afe2882ae077b014eaacb28be5a7104f, type: 2}
+  - {fileID: 11400000, guid: cb5e4b1385afbbc4284dbf3d5339e28f, type: 2}
+  - {fileID: 11400000, guid: 316f69f6380d2514fa2f66ede6f6112e, type: 2}
+  - {fileID: 11400000, guid: 154721e2a72a3f340a871faa0fa139cb, type: 2}
+  - {fileID: 11400000, guid: 27715d2552ed6f24d9fc520e193a4725, type: 2}
