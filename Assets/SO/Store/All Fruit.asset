@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24b21bfe662bde40a613ff4efbad1af, type: 3}
+  m_Name: All Fruit
+  m_EditorClassIdentifier: 
+  storeName: Buah-Buahan
+  storeItems:
+  - {fileID: 11400000, guid: 1f899c672aaf8ce48acf62c2045b707f, type: 2}
+  - {fileID: 11400000, guid: e3d6e7e65cd9c1144b6a7ef3e738fa5a, type: 2}
+  - {fileID: 11400000, guid: 087c7906342a0354cb6dd2f75869a218, type: 2}
+  - {fileID: 11400000, guid: e1c9f3dee41b2464da202ce18835e1d7, type: 2}
+  - {fileID: 11400000, guid: cf7c3f17f13215c43be27314c893dbda, type: 2}
+  - {fileID: 11400000, guid: 3932d71668b6b4548b2fcb8816b24d9c, type: 2}
+  - {fileID: 11400000, guid: d44364f46ee92364986aa99f9fdb9ce4, type: 2}
+  - {fileID: 11400000, guid: 4a27ed8c58d8df04d80bbdc682d4b83e, type: 2}
+  - {fileID: 11400000, guid: 6c222839dc6fc3144a3deb3f2b059287, type: 2}
+  - {fileID: 11400000, guid: beeea010ea8026e4fa919af5d7d51eb7, type: 2}
+  - {fileID: 11400000, guid: 154721e2a72a3f340a871faa0fa139cb, type: 2}
+  - {fileID: 11400000, guid: 6b9da319f9c090446bd778185088ebed, type: 2}
+  - {fileID: 11400000, guid: 4ca4e122400671d42a21fe40e126a1ab, type: 2}
+  - {fileID: 11400000, guid: 9c9b980694d6c994ea25ae31376ef1cf, type: 2}
+  - {fileID: 11400000, guid: 732a877f691178d4bacb9bfa013d619c, type: 2}
