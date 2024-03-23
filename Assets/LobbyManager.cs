@@ -20,6 +20,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public float timeUpdates = 1.5f;
     float nextUpdate;
 
+    public List<PlayerPrefab> playerPrefabList = new List<PlayerPrefab>();
+    public PlayerPrefab playerPrefab;
+    public Transform playerPrefabParent;
+
     public void Start()
     {
         PhotonNetwork.JoinLobby();
@@ -31,7 +35,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.CreateRoom(roomInput.text,
                 new RoomOptions()
-                { MaxPlayers = 5});
+                { MaxPlayers = 5, BroadcastPropsChangeToAll = true});
         }
     }
 
@@ -40,11 +44,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+        UpdatePlayerList();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        if(Time.time >= nextUpdate)
+        if (Time.time >= nextUpdate)
         {
             UpdateRoomList(roomList);
             nextUpdate = Time.time + timeUpdates;
@@ -87,4 +92,37 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
     }
+
+    void UpdatePlayerList()
+    {
+        foreach (PlayerPrefab player in playerPrefabList)
+        {
+            Destroy(player.gameObject);
+        }
+        playerPrefabList.Clear();
+
+        if (PhotonNetwork.CurrentRoom == null)
+        {
+            return;
+        }
+
+        foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
+        {
+            PlayerPrefab newPlayerPrefab = Instantiate(playerPrefab, playerPrefabParent);
+            newPlayerPrefab.SetPlayerInfo(player.Value);
+            playerPrefabList.Add(newPlayerPrefab);
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Debug.Log("Player " + newPlayer.ActorNumber + " Entered!");
+        UpdatePlayerList();
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        UpdatePlayerList();
+    }
+
 }

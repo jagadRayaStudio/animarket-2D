@@ -15,6 +15,12 @@ public class QuestionUI : MonoBehaviour
 
     public void SetQuestion(ItemSO item, int amount, int total)
     {
+
+        Debug.Log("**Setting Question:**");
+        Debug.Log("**Item:** " + item.itemName);
+        Debug.Log("**Amount:** " + amount);
+        Debug.Log("**Total:** " + total);
+
         itemIcon.sprite = item.sprite;
         itemName.text = item.itemName;
         itemDesc.text = item.itemDesc.ToString();

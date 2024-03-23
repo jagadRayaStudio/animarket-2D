@@ -17,18 +17,13 @@ public class SetupItemUI : MonoBehaviour
 
     private ItemSO selectedItem;
 
+    public QuestionListUI questionListUI;
+
     public static SetupItemUI Instance { get; private set; }
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
     public void SetSelectedItem(ItemSO item)
@@ -40,9 +35,11 @@ public class SetupItemUI : MonoBehaviour
         itemPrice.text = selectedItem.cost.ToString();
 
         itemAmount.onValueChanged.AddListener(delegate { UpdateTotalPrice(); });
+
+        AddQuestionButton.onClick.AddListener(() => CreateQuestion());
     }
 
-    private void UpdateTotalPrice()
+    public void UpdateTotalPrice()
     {
         if (selectedItem != null)
         {
@@ -51,8 +48,6 @@ public class SetupItemUI : MonoBehaviour
             int total = amount * price;
             totalPrice.text = total.ToString();
         }
-
-        AddQuestionButton.onClick.AddListener(() => CreateQuestion());
     }
 
     public void CreateQuestion()
@@ -61,6 +56,10 @@ public class SetupItemUI : MonoBehaviour
         int amount = int.Parse(itemAmount.text);
         int total = int.Parse(totalPrice.text);
 
-        QuestionListUI.Instance.DisplayQuestion(item, amount, total);
+        Debug.Log("**Item:** " + item.itemName);
+        Debug.Log("**Amount:** " + amount);
+        Debug.Log("**Total:** " + total);
+
+        questionListUI.DisplayQuestion(item, amount, total);
     }
 }
