@@ -1,31 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 using TMPro;
 
 public class QuestionUI : MonoBehaviour
 {
+    public static QuestionUI instance;
+
+    public Button EditBtn;
+
     public Image itemIcon;
     public TMP_Text itemName;
     private TMP_Text itemDesc;
     public TMP_Text itemPrice;
-    public TMP_Text itemAmount;
-    private TMP_Text totalPrice;
+    public TMP_InputField itemAmount;
+    public TMP_Text totalPrice;
 
-    public void SetQuestion(ItemSO item, int amount, int total)
+    ItemSO selectedItem;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Update()
     {
 
-        Debug.Log("**Setting Question:**");
-        Debug.Log("**Item:** " + item.itemName);
-        Debug.Log("**Amount:** " + amount);
-        Debug.Log("**Total:** " + total);
-
-        itemIcon.sprite = item.sprite;
-        itemName.text = item.itemName;
-        itemDesc.text = item.itemDesc.ToString();
-        itemPrice.text = item.cost.ToString();
-        itemAmount.text = amount.ToString();
-        totalPrice.text = total.ToString();
+        this.EditBtn.onClick.AddListener(SetupManager.Instance.OpenMainPanel);
     }
 }

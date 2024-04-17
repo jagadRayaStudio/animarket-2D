@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
@@ -12,6 +12,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject lobbyPanel;
     public GameObject roomPanel;
     public TMP_Text roomName;
+
+    public GameObject playBtn;
 
     public RoomItem roomItemPrefab;
     List<RoomItem> roomItemsList = new List<RoomItem>();
@@ -23,6 +25,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public List<PlayerPrefab> playerPrefabList = new List<PlayerPrefab>();
     public PlayerPrefab playerPrefab;
     public Transform playerPrefabParent;
+
+    public LobbyUITween lobbyUITween;
+
+
 
     public void Start()
     {
@@ -37,13 +43,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                 new RoomOptions()
                 { MaxPlayers = 5, BroadcastPropsChangeToAll = true});
         }
+        else
+        {
+            lobbyUITween.OpenNotifBox();
+        }
     }
 
     public override void OnJoinedRoom()
     {
-        lobbyPanel.SetActive(false);
-        roomPanel.SetActive(true);
-        roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+        lobbyUITween.OpenRoomPanel();
+        roomName.text = "Kamu Berada di Kelas: " + PhotonNetwork.CurrentRoom.Name;
         UpdatePlayerList();
     }
 
@@ -80,12 +89,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void OnClickLeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-    }
-
-    public override void OnLeftRoom()
-    {
-        roomPanel.SetActive(false);
-        lobbyPanel.SetActive(true);
+        lobbyUITween.CloseRoomPanel();
     }
 
     public override void OnConnectedToMaster()
@@ -111,18 +115,43 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PlayerPrefab newPlayerPrefab = Instantiate(playerPrefab, playerPrefabParent);
             newPlayerPrefab.SetPlayerInfo(player.Value);
             playerPrefabList.Add(newPlayerPrefab);
+
+            LeanTween.scale(newPlayerPrefab.gameObject, new Vector2(1.75f, 1.75f), 0.4f).setEase(LeanTweenType.easeInOutQuart);
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("Player " + newPlayer.ActorNumber + " Entered!");
         UpdatePlayerList();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerList();
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
+        {
+            playBtn.SetActive(true);
+            playBtn.LeanScale(Vector2.one, 0.2f).setEaseInOutQuart();
+        }
+        else
+        {
+            playBtn.LeanScale(Vector2.zero, 0.2f).setEaseInBack();
+        }
+    }
+    public void OnClickPlayButton()
+    {
+        PhotonNetwork.LoadLevel("2 Game");
+    }
+
+    public override void OnLeftLobby()
+    {
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(null);
+        SceneManager.LoadScene("0 Main Menu");
     }
 
 }

@@ -6,20 +6,23 @@ using TMPro;
 
 public class QMItemUI : MonoBehaviour
 {
+    public static QMItemUI instance;
+
     public Image itemIcon;
-    private int cost;
+    public int cost;
     public TMP_Text itemName;
-    private string itemDesc;
+    public string itemDesc;
 
-    public Button itemButton;
-
-    public void SetStoreItem(ItemSO _item, SetupItemUI setupitemUI)
+    private void Awake()
     {
-        itemIcon.sprite = _item.sprite;
-        itemName.text = _item.itemName;
-        cost = _item.cost;
-        itemDesc = _item.itemDesc;
+        instance = this;
+    }
 
-        itemButton.onClick.AddListener(() => SetupItemUI.Instance.SetSelectedItem(_item));
+    public void SetStoreItem(ItemSO item)
+    {
+        itemIcon.sprite = item.sprite;
+        itemName.text = item.itemName;
+        cost = item.cost;
+        itemDesc = item.itemDesc;
     }
 }

@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 131.81, y: 27.64}
+  m_SizeDelta: {x: 156.8665, y: 36.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8920729486586491004
 CanvasRenderer:
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nama Ruangan
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c091891db3343624e812e3a3713e386b, type: 2}
+  m_sharedMaterial: {fileID: 7621084955209611803, guid: c091891db3343624e812e3a3713e386b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -94,12 +94,12 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 16
-  m_fontSizeBase: 24
+  m_fontSizeBase: 16
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 4
-  m_fontSizeMax: 16
-  m_fontStyle: 1
+  m_fontSizeMax: 32
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -173,8 +173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57, y: 110}
-  m_SizeDelta: {x: 150, y: 40}
+  m_AnchoredPosition: {x: 153.21082, y: 97.658325}
+  m_SizeDelta: {x: 171.1928, y: 51.378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8920729486989013330
 CanvasRenderer:

@@ -17,3 +17,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1d01818384f752d46a7390146298f4a3, type: 3}
   itemDesc: Ikan bawal, yang sering ditemui di perairan laut, kaya akan protein yang
     baik untuk pertumbuhan otot dan kekuatan tubuh.
+  category: 0

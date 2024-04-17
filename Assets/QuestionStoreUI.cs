@@ -46,7 +46,7 @@ public class QuestionStoreUI : MonoBehaviour
         foreach (var storeItemData in storeData.storeItems)
         {
             Button storeItemObject = Instantiate(ItemPrefab, ItemParent.transform);
-            storeItemObject.GetComponent<QMItemUI>().SetStoreItem(storeItemData, GetComponent<SetupItemUI>());
+            //storeItemObject.GetComponent<QMItemUI>().SetStoreItem(storeItemData, GetComponent<SetupItemUI>());
             storeItemObject.onClick.AddListener(() => SelectedItem(storeItemData));
             storeItems.Add(storeItemObject);
         }
@@ -72,6 +72,6 @@ public class QuestionStoreUI : MonoBehaviour
         QM_Items.SetActive(false);
         QM_Setup.SetActive(true);
 
-        SetupItemUI.Instance.SetSelectedItem(selectedItem);
+        //SetupItemUI.Instance.SetSelectedItem(selectedItem);
     }
 }

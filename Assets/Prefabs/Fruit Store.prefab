@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1393634959459587382}
   - component: {fileID: 1393634959459587383}
   - component: {fileID: 1393634959459587381}
-  - component: {fileID: 1393634959459587380}
+  - component: {fileID: 1869262126691293835}
+  - component: {fileID: 3984874657933021182}
   m_Layer: 0
   m_Name: Fruit Store
   m_TagString: Store
@@ -113,7 +114,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.196733, y: 8.362406}
   m_EdgeRadius: 0
---- !u!114 &1393634959459587380
+--- !u!114 &1869262126691293835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,10 +123,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393634959459587376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2dfdcf13a825674d8815a69180391a2, type: 3}
+  m_Script: {fileID: 11500000, guid: e9b94b7e586e8dd45bb1c2cd148a1750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storeCue: {fileID: 0}
+  storePanel: {fileID: 0}
+  interactButton: {fileID: 0}
   storeData: {fileID: 0}
+--- !u!114 &3984874657933021182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393634959459587376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4550997451756704634
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,3 +252,4 @@ MonoBehaviour:
   storeCue: {fileID: 4550997451756704634}
   storePanel: {fileID: 0}
   interactButton: {fileID: 0}
+  storeData: {fileID: 0}

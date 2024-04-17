@@ -13,53 +13,13 @@ public class SetupItemUI : MonoBehaviour
     public TMP_InputField itemAmount;
     public TMP_Text totalPrice;
 
-    public Button AddQuestionButton;
+    public Button backBtn;
+    public Button CreateQuestionButton;
 
-    private ItemSO selectedItem;
-
-    public QuestionListUI questionListUI;
-
-    public static SetupItemUI Instance { get; private set; }
+    public static SetupItemUI Instance;
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    public void SetSelectedItem(ItemSO item)
-    {
-        selectedItem = item;
-        itemIcon.sprite = selectedItem.sprite;
-        itemName.text = selectedItem.itemName;
-        itemDesc.text = selectedItem.itemDesc.ToString();
-        itemPrice.text = selectedItem.cost.ToString();
-
-        itemAmount.onValueChanged.AddListener(delegate { UpdateTotalPrice(); });
-
-        AddQuestionButton.onClick.AddListener(() => CreateQuestion());
-    }
-
-    public void UpdateTotalPrice()
-    {
-        if (selectedItem != null)
-        {
-            int amount = int.Parse(itemAmount.text);
-            int price = selectedItem.cost;
-            int total = amount * price;
-            totalPrice.text = total.ToString();
-        }
-    }
-
-    public void CreateQuestion()
-    {
-        ItemSO item = selectedItem;
-        int amount = int.Parse(itemAmount.text);
-        int total = int.Parse(totalPrice.text);
-
-        Debug.Log("**Item:** " + item.itemName);
-        Debug.Log("**Amount:** " + amount);
-        Debug.Log("**Total:** " + total);
-
-        questionListUI.DisplayQuestion(item, amount, total);
     }
 }

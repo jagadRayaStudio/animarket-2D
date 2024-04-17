@@ -9,51 +9,62 @@ using TMPro;
 public class PlayerPrefab : MonoBehaviourPunCallbacks
 {
     public TMP_Text playerName;
-
-    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
-
     public Image playerIcon;
     public Sprite[] icons;
 
     Player player;
 
+    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+
     public void SetPlayerInfo(Player _player)
     {
         playerName.text = _player.NickName;
         player = _player;
+
+        if (!playerProperties.ContainsKey("playerIcon"))
+        {
+            playerProperties.Add("playerIcon", 0); // Default icon index
+        }
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+
         UpdatePlayerPrefab(player);
     }
 
     public void OnClickLeftButton()
     {
-        if ((int)playerProperties["playerIcon"] == 0)
+        if (player != null && player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
         {
-            playerProperties["playerIcon"] = icons.Length - 1;
+            if ((int)playerProperties["playerIcon"] == 0)
+            {
+                playerProperties["playerIcon"] = icons.Length - 1;
+            }
+            else
+            {
+                playerProperties["playerIcon"] = (int)playerProperties["playerIcon"] - 1;
+            }
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
-        else
-        {
-            playerProperties["playerIcon"] = (int)playerProperties["playerIcon"] - 1;
-        }
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
     public void OnClickRightButton()
     {
-        if ((int)playerProperties["playerIcon"] == icons.Length - 1)
+        if (player != null && player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
         {
-            playerProperties["playerIcon"] = 0;
+            if ((int)playerProperties["playerIcon"] == icons.Length - 1)
+            {
+                playerProperties["playerIcon"] = 0;
+            }
+            else
+            {
+                playerProperties["playerIcon"] = (int)playerProperties["playerIcon"] + 1;
+            }
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
-        else
-        {
-            playerProperties["playerIcon"] = (int)playerProperties["playerIcon"] + 1;
-        }
-
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable playerProperties)
     {
-        if (player == targetPlayer)
+        if (targetPlayer.ActorNumber == player.ActorNumber)
         {
             UpdatePlayerPrefab(targetPlayer);
         }

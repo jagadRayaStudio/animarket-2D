@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class TransactionUI : MonoBehaviour
 {
@@ -13,26 +14,15 @@ public class TransactionUI : MonoBehaviour
     public TMP_InputField itemAmount;
     public TMP_InputField totalPrice;
 
-    public GameObject transactionPanel;
-    public GameObject successPanel;
-    public GameObject failedPanel;
+    public Button BuyBtn;
 
-    private ItemSO selectedItem;
+    public ItemSO selectedItem;
 
-    public static TransactionUI Instance { get; private set; }
+    public static TransactionUI Instance;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        transactionPanel.SetActive(false);
+        Instance = this;
     }
 
     public void SetSelectedItem(ItemSO item)
@@ -40,10 +30,10 @@ public class TransactionUI : MonoBehaviour
         selectedItem = item;
         itemIcon.sprite = selectedItem.sprite;
         itemName.text = selectedItem.itemName;
-        itemDesc.text = selectedItem.itemDesc.ToString();
+        itemDesc.text = selectedItem.itemDesc.ToString();   
         itemPrice.text = selectedItem.cost.ToString();
 
-        transactionPanel.SetActive(true);
+        GameUITween.Instance.OpenTransactionPanel();
     }
 
 }

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 6be36d979153ff84da4f1e344e08d2ce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - StartBtn: {fileID: 7876274388625572371, guid: 21b520da239d2b649a68b661433b7fda, type: 3}
+  - HelpBtn: {fileID: 9138167379077200058, guid: a3d231d8e9cdff949971df5354c4670e, type: 3}
+  - ExitBtn: {fileID: 2186284814240983951, guid: f7ca9b0336f267741aed2b3cfd0de554, type: 3}
+  - NextBtn: {fileID: 6779697015719735529, guid: 305e61419b365d14b881226bb9e1fb8c, type: 3}
+  - BackBtn: {fileID: 72812867568526103, guid: a5617a33969df9b4a82417bf4eaa28dc, type: 3}
+  - CloseBtn: {fileID: 9077713547606857765, guid: e3b0af69a4db021428903f5070b8c80a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
